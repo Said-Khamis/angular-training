@@ -1,0 +1,21 @@
+nav{
+    display: flex;
+    flex-direction: row;
+
+    a{
+        text-decoration: none;
+        // background-color: rgb(232, 228, 228);
+        margin: 2px;
+        padding: 5px 15px 5px 15px;
+    }
+
+    .active{
+        text-decoration: none;
+        background-color: rgb(232, 228, 228);
+        margin: 2px;
+        padding: 5px 15px 5px 15px;
+        color: #000;
+    }
+}
+
+

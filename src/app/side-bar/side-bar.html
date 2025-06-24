@@ -1,0 +1,39 @@
+<div class="sidebar">
+   <div class="logo">
+      EGA
+   </div> 
+    
+   <div class="sidebar-link">
+        <a [routerLink]="['']">
+            <i class="fa fa-home mx-1"></i>
+            Dashboard
+        </a>
+        <a  (click)="toogleUser()">
+            <i class="fa fa-user mx-1"></i>User Management
+        </a>
+        @if (isUserShown) {
+            <div class="list-sub-menu" [class.expanded]="isUserShown">
+                <a [routerLink]="['/users/users-list']">Users List</a>
+                <a [routerLink]="['/users/office-users']">Office Users</a>
+            </div>
+        }
+        
+        <a [routerLink]="['/settings']">
+            <i class="fa fa-gear mx-1"></i>Settings
+        </a>
+   </div>
+   <div class="user-profile">
+       <a>
+         <i class="fa-regular fa-address-card fa-1x"></i>
+         <span class="mx-2">My Profile</span>
+       </a>
+       <a>         
+        <i class="fa-solid fa-right-from-bracket fa-1x"></i>
+        <span class="mx-2">Logout</span>
+       </a>
+   </div>
+   <!-- <div class="list-sub-menu">
+     <a [routerLink]="['regions']">Regions</a>
+     <a [routerLink]="['districts']">Districts</a>
+   </div> -->
+</div>

@@ -1,0 +1,31 @@
+<app-layout>
+    <div class="d-flex flex-column">
+        <h6>List of User(s)</h6>
+        @if (users_list.length > 0) {
+        <div class="table-responsive mt-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <td>S/N</td>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Designation</td>
+                    <td>Position</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (user of users_list; track $index) {
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.designation }}</td>
+                            <td>{{ user.title }}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        }
+    </div>
+</app-layout>

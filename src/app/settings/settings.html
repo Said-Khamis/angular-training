@@ -1,0 +1,10 @@
+<app-layout>
+    <nav>
+        <a [routerLink]="['regions']" routerLinkActive="active" >Regions</a>
+        <a [routerLink]="['districts']" routerLinkActive="active">Districts</a>
+    </nav>
+    
+    <main class="p-3">
+        <router-outlet></router-outlet>
+    </main>
+</app-layout>
