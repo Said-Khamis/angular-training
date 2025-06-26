@@ -1,31 +1,64 @@
 <app-layout>
     <div class="d-flex flex-column">
-        <h6>List of User(s)</h6>
-        @if (users_list.length > 0) {
-        <div class="table-responsive mt-2">
-            <table class="table table-striped">
+        <div class="d-flex flex-row justify-content-between">
+           <h6>List of User(s)</h6>
+           <button (click)="addUser()" class="btn btn-sm btn-primary">
+             <i class="fa fa-plus mx-1"></i> Add User
+            </button>
+        </div>
+       
+          <div class="d-flex flex-row mt-2">
+            <div class="table-responsive mt-2 user_list">
+               <table class="table table-striped">
                 <thead>
                     <tr>
-                    <td>S/N</td>
-                    <td>Name</td>
-                    <td>Email</td>
-                    <td>Designation</td>
-                    <td>Position</td>
+                        <th>S/N</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Designation</th>
+                        <th>Position</th>
+                        <th>DOB</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @for (user of users_list; track $index) {
-                        <tr>
-                            <td>{{ $index + 1 }}</td>
-                            <td>{{ user.name }}</td>
-                            <td>{{ user.email }}</td>
-                            <td>{{ user.designation }}</td>
-                            <td>{{ user.title }}</td>
-                        </tr>
-                    }
+                    @if (users_list.length > 0) {
+                        @for (user of users_list; track $index) {
+                            <tr>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ user.name }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.designation }}</td>
+                                <td>{{ user.title }}</td>
+                                <td>{{ (user.dob | date) ?? "-" }}</td>
+                                <td>
+                                    <button (click)="viewUser(user)" class="btn btn-sm btn-secondary">
+                                        <i class="fa fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    }@else {
+                       <tr>
+                          <td colspan="4">No User Found</td>
+                       </tr>
+                     }
                 </tbody>
-            </table>
-        </div>
-        }
+               </table>
+            </div>
+            @if (selectedUser) {
+              <div class="side-form-input">
+               <app-user-details [user]="selectedUser"
+                  (closeComponent)="componentClose($event)" />
+              </div>
+            }
+
+            @if (isAddingUser && !isClose) {
+               <div class="side-form-input">
+                 <app-add-user (addNewUser)="handleNewUser($event)"
+                          (closeComponent)="componentClose($event)"/>
+               </div>
+            }
+          </div>
     </div>
 </app-layout>

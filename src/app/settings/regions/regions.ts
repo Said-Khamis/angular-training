@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { AppLayout } from "../../app-layout/app-layout";
 
 @Component({
   selector: 'app-regions',
-  imports: [AppLayout],
+  imports: [
+
+  ],
   templateUrl: './regions.html',
   styleUrl: './regions.scss'
 })

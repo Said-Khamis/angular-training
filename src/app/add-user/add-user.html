@@ -1,1 +1,47 @@
-<p>add-user works!</p>
+<div class="d-flex flex-column">
+     <div class="d-flex flex-row justify-content-between">
+        <h6>User Details</h6>
+        <button (click)="close()" class="btn btn-sm btn-default">
+            <i class="fa fa-close"></i>
+        </button>
+    </div>
+   <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="d-flex flex-column p-3">
+    <div class="form-group">
+        <label>Name </label>
+        <input type="text" name="name" formControlName="name" 
+           placeholder="Enter Name" 
+           class="form-control {{ profileForm.controls['name'].invalid && profileForm.controls['name'].dirty ? 'is-invalid' : ''}}" />
+        @if (profileForm.controls['name'].invalid 
+         && profileForm.controls['name'].dirty) {
+           <label class="text-danger">Name is required</label>
+        }
+    </div>
+    <div class="form-group my-2">
+        <label>Email </label>
+        <input type="email" name="email" formControlName="email" placeholder="Enter Email" class="form-control" />
+        @if (profileForm.controls['email'].invalid 
+         && profileForm.controls['email'].dirty) {
+           <label class="text-danger">Email is required</label>
+        }
+    </div>
+    <div class="form-group">
+        <label>Address </label>
+        <textarea type="text" name="address" formControlName="address" placeholder="Enter Address" class="form-control"></textarea>
+        @if (profileForm.controls['address'].invalid 
+         && profileForm.controls['address'].dirty) {
+           <label class="text-danger">Address is required</label>
+        }
+    </div>
+    <div class="form-group my-2">
+        <label>Date of Birth </label>
+        <input type="date" name="dob" formControlName="dob" placeholder="Select Date" class="form-control" />
+        @if (profileForm.controls['dob'].invalid 
+         && profileForm.controls['dob'].dirty) {
+           <label class="text-danger">DOB is required</label>
+        }
+    </div>
+   <button type="submit"  [disabled]="!profileForm.valid" class="btn btn-primary">Save</button>
+  </div>
+</form>
+</div>
