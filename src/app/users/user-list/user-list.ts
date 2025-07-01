@@ -35,12 +35,12 @@ export class UserList implements OnInit {
    }
 
    addUser(): void{
-     this.isAddingUser = !this.isAddingUser;
+     this.isAddingUser = true;
    }
 
    viewUser(user: User): void {
       this.selectedUser = user;
-      console.log("Email::" + user.name);
+      //console.log("Email::" + user.name);
    }
 
    componentClose(event: boolean){
@@ -52,7 +52,7 @@ export class UserList implements OnInit {
    }
 
    handleNewUser(user: User){
-       console.log("User Email::" + user.email);
+       //console.log("User Email::" + user.email);
        this.users_list = [...this.users_list , user]
    }
 }
